@@ -183,7 +183,7 @@ page("security.html", "Security | AAR Compiler & Knowledge Center", "Security mo
   <li>No external libraries, CDNs, fonts, analytics or third-party scripts. Every script is a file on this site.</li>
 </ul>
 <h2>Threat model summary</h2>
-<table>
+<div class="r-tablewrap" tabindex="0" role="region" aria-label="Threat model table"><table>
   <thead><tr><th scope="col">Threat</th><th scope="col">How the site responds</th><th scope="col">What remains</th></tr></thead>
   <tbody>
     <tr><td>Malicious text pasted into fields (cross-site scripting)</td><td>All text is inserted with text nodes only; the code never uses innerHTML, document.write, eval or new Function. The CSP blocks inline scripts and enforces Trusted Types.</td><td>Browser bugs or extensions outside the site's control.</td></tr>
@@ -194,7 +194,7 @@ page("security.html", "Security | AAR Compiler & Knowledge Center", "Security mo
     <tr><td>Framing (clickjacking)</td><td>Scripts hide the page and try to break out if it is loaded inside another site's frame.</td><td>A header-based frame-ancestors policy cannot be set on Neocities (see below).</td></tr>
     <tr><td>Data loss</td><td>Autosave, manual save, storage error messages, JSON backup and restore.</td><td>Clearing browser data deletes the project unless you have a backup.</td></tr>
   </tbody>
-</table>
+</table></div>
 <h2>Security headers on Neocities</h2>
 <p>Neocities does not let site owners set custom HTTP response headers. As a result:</p>
 <ul>

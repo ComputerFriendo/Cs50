@@ -53,3 +53,7 @@ Each data file starts with its editing rules. In short:
 - **Official links:** none had been verified at build time, because the build environment could not reach government websites. Every link carries a "not yet verified" label until someone checks it.
 - **Report library:** several entries have no confirmed official link yet. Those entries show the agency's website and a search tip instead.
 - **Not yet built:** cross-report comparison, recurring-finding tracking, trend analysis and graphical relationship maps. Traceability is shown as a chain per finding and as a table in Quality Control.
+
+## Single-file edition
+
+`single/index.html` is the whole site in one file, for pasting into the Neocities editor. Build it with `node tools/build_single.mjs` (no dependencies). It has a table of contents with line numbers, color-coded section banners and developer notes. Each inline `<style>` and `<script>` is allowed by its SHA-256 hash in the CSP, so do not edit those blocks by hand: change the source files and rebuild. After loading, it freezes the content data, the `AAR` namespace and the built-in prototypes.
