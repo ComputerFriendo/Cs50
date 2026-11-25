@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- SECURITY: Neocities cannot send custom HTTP headers, so the Content Security Policy is set here as a meta tag.
+     It allows only this site's own scripts and styles, no inline code, no network connections, no frames, and enforces Trusted Types.
+     frame-ancestors, HSTS and other header-only protections cannot be set from a meta tag; see security.html. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests; require-trusted-types-for 'script'; trusted-types 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Security model, protections and known limitations of the AAR Compiler static website.">
+<title>Security | AAR Compiler & Knowledge Center</title>
+<link rel="stylesheet" href="css/site.css">
+<link rel="icon" href="data:,">
+</head>
+<body data-page="security">
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="index.html"><svg class="logo" viewBox="0 0 36 36" aria-hidden="true" focusable="false"><rect width="36" height="36" rx="6" fill="#f2b134"/><path d="M8 27 L18 8 L28 27 Z" fill="none" stroke="#0f1b2d" stroke-width="3" stroke-linejoin="round"/><path d="M12.5 21.5 h11" stroke="#0f1b2d" stroke-width="3"/></svg><span>AAR Compiler &amp; Knowledge Center<small>After-Action Review guidance, tools and references</small></span></a>
+    <form id="site-search" class="site-search" role="search" action="library.html" method="get">
+      <label class="sr-only" for="site-q">Search the site</label>
+      <input id="site-q" name="q" type="search" maxlength="100" placeholder="Search guidance, reports, terms…" autocomplete="off">
+      <button class="btn alt" type="submit">Search</button>
+    </form>
+    <a class="btn-compiler" href="compiler.html">Open the compiler</a>
+    <button id="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+  </div>
+  <nav id="site-nav" aria-label="Main"><ul><li><a href="index.html" data-page="home">Home</a></li><li><a href="compiler.html" data-page="compiler">AAR Compiler</a></li><li><a href="library.html#knowledge">Knowledge Center</a></li><li><a href="library.html#guidance">Official Guidance</a></li><li><a href="library.html#reports">Report Library</a></li><li><a href="library.html#templates">Templates</a></li><li><a href="library.html#guides">Specialized Guides</a></li><li><a href="library.html#glossary">Glossary</a></li><li><a href="library.html#faq">FAQ</a></li><li><a href="library.html#about">About</a></li><li><a href="privacy.html" data-page="privacy">Privacy</a></li><li><a href="security.html" data-page="security">Security</a></li></ul></nav>
+</header>
+
+<div class="page"><main id="main" class="content">
+<nav class="breadcrumb" aria-label="Breadcrumb"><ol><li><a href="index.html">Home</a></li><li aria-current="page">Security</li></ol></nav>
+<h1>Security</h1>
+<p class="lead">This site is designed to keep its attack surface small. It is not perfectly secure, and it is not a secure document system.</p>
+<h2>Architecture</h2>
+<ul>
+  <li>Static files only (HTML, CSS, JavaScript and JavaScript data files), hosted on Neocities. No server-side code, database, uploads or user accounts.</li>
+  <li>All compiler processing happens in your browser. Projects are stored in your browser's localStorage and leave your device only when you export them.</li>
+  <li>No external libraries, CDNs, fonts, analytics or third-party scripts. Every script is a file on this site.</li>
+</ul>
+<h2>Threat model summary</h2>
+<table>
+  <thead><tr><th scope="col">Threat</th><th scope="col">How the site responds</th><th scope="col">What remains</th></tr></thead>
+  <tbody>
+    <tr><td>Malicious text pasted into fields (cross-site scripting)</td><td>All text is inserted with text nodes only; the code never uses innerHTML, document.write, eval or new Function. The CSP blocks inline scripts and enforces Trusted Types.</td><td>Browser bugs or extensions outside the site's control.</td></tr>
+    <tr><td>Malicious or malformed backup file</td><td>Only .json under 2 MB; parsed with JSON.parse; nesting depth limited; rebuilt field by field from a fixed schema with type, length, ID and reference checks; unknown properties dropped; preview and confirmation before anything is replaced.</td><td>A well-formed file with misleading but harmless text.</td></tr>
+    <tr><td>Dangerous links</td><td>User-entered links must be https://; javascript:, data:, file:, vbscript: and malformed URLs are rejected. External links open with rel="noopener noreferrer". No URL is fetched automatically.</td><td>A legitimate https site that is itself harmful.</td></tr>
+    <tr><td>Spreadsheet formula injection in CSV exports</td><td>Cells beginning with = + - @ are prefixed with an apostrophe.</td><td>None known.</td></tr>
+    <tr><td>Shared computer, other people or extensions reading data</td><td>Warnings before starting; no sensitive fields requested; contact details excluded from reports; one clearly named storage key; Reset deletes it.</td><td>LocalStorage is not encrypted. Do not enter sensitive information.</td></tr>
+    <tr><td>Framing (clickjacking)</td><td>Scripts hide the page and try to break out if it is loaded inside another site's frame.</td><td>A header-based frame-ancestors policy cannot be set on Neocities (see below).</td></tr>
+    <tr><td>Data loss</td><td>Autosave, manual save, storage error messages, JSON backup and restore.</td><td>Clearing browser data deletes the project unless you have a backup.</td></tr>
+  </tbody>
+</table>
+<h2>Security headers on Neocities</h2>
+<p>Neocities does not let site owners set custom HTTP response headers. As a result:</p>
+<ul>
+  <li><strong>Content-Security-Policy</strong> is delivered as a meta tag on every page: only this site's scripts and styles, no inline code, no network connections, no frames, no plugins, no form submission, and Trusted Types enforced.</li>
+  <li><strong>frame-ancestors</strong>, <strong>Strict-Transport-Security</strong>, <strong>X-Content-Type-Options</strong> and <strong>Permissions-Policy</strong> cannot be set from a meta tag. Whether Neocities sends any of them by default has not been verified for this site. You can check in your browser's developer tools (Network tab, response headers).</li>
+  <li><strong>Referrer-Policy</strong> is set to no-referrer with a meta tag.</li>
+  <li>HTTPS is provided by Neocities. All links on this site use https://.</li>
+</ul>
+<h2>Recommended practices for users</h2>
+<ul>
+  <li>Enter only general, non-sensitive information. Refer to sensitive records by description and keep them in your organization's approved system.</li>
+  <li>Download a JSON backup after each working session and store it as you would any work document.</li>
+  <li>Avoid shared computers; if unavoidable, back up and reset before leaving.</li>
+  <li>Keep your browser up to date and limit extensions with access to all sites.</li>
+  <li>Confirm official documents on the agency's own website before relying on them.</li>
+</ul>
+<h2>Testing</h2>
+<p>Before publishing, the compiler was tested with script-like text, HTML tags, malicious-looking URLs and malformed or hostile backup files to confirm content stays inert. Testing covers this site only.</p>
+<h2>Reporting a problem</h2>
+<p>If you find a security problem, contact the site owner through their Neocities profile. Do not test against systems you do not own or have permission to test.</p>
+<p><a href="privacy.html">Read the privacy page</a></p>
+</main></div>
+<footer class="site-footer"><div class="inner">
+  <p><strong>Independent resource.</strong> This website is not an official government website and is not affiliated with any agency named on it. It does not replace agency requirements, policies, standards or professional judgment.</p>
+  <p>No accounts, no analytics, no tracking, no cookies. Your AAR project stays in your browser. <a href="privacy.html">Privacy</a> · <a href="security.html">Security</a> · <a href="library.html#about">Sources and methodology</a></p>
+</div></footer>
+<div id="live" class="sr-only" aria-live="polite"></div>
+<div id="print-area"></div>
+<noscript><p class="page warning">The compiler, search and library need JavaScript. The privacy and security pages work without it.</p></noscript>
+<script src="js/dom.js"></script>
+<script src="js/nav.js"></script>
+</body>
+</html>

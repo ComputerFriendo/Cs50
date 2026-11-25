@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- SECURITY: Neocities cannot send custom HTTP headers, so the Content Security Policy is set here as a meta tag.
+     It allows only this site's own scripts and styles, no inline code, no network connections, no frames, and enforces Trusted Types.
+     frame-ancestors, HSTS and other header-only protections cannot be set from a meta tag; see security.html. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests; require-trusted-types-for 'script'; trusted-types 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="After-Action Review knowledge center: how-to guides, official government guidance, a report archive, templates, specialized guides, a glossary and site search.">
+<title>AAR Knowledge Center</title>
+<link rel="stylesheet" href="css/site.css">
+<link rel="icon" href="data:,">
+</head>
+<body data-page="library">
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="index.html"><svg class="logo" viewBox="0 0 36 36" aria-hidden="true" focusable="false"><rect width="36" height="36" rx="6" fill="#f2b134"/><path d="M8 27 L18 8 L28 27 Z" fill="none" stroke="#0f1b2d" stroke-width="3" stroke-linejoin="round"/><path d="M12.5 21.5 h11" stroke="#0f1b2d" stroke-width="3"/></svg><span>AAR Compiler &amp; Knowledge Center<small>After-Action Review guidance, tools and references</small></span></a>
+    <form id="site-search" class="site-search" role="search" action="library.html" method="get">
+      <label class="sr-only" for="site-q">Search the site</label>
+      <input id="site-q" name="q" type="search" maxlength="100" placeholder="Search guidance, reports, terms…" autocomplete="off">
+      <button class="btn alt" type="submit">Search</button>
+    </form>
+    <a class="btn-compiler" href="compiler.html">Open the compiler</a>
+    <button id="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+  </div>
+  <nav id="site-nav" aria-label="Main"><ul><li><a href="index.html" data-page="home">Home</a></li><li><a href="compiler.html" data-page="compiler">AAR Compiler</a></li><li><a href="library.html#knowledge">Knowledge Center</a></li><li><a href="library.html#guidance">Official Guidance</a></li><li><a href="library.html#reports">Report Library</a></li><li><a href="library.html#templates">Templates</a></li><li><a href="library.html#guides">Specialized Guides</a></li><li><a href="library.html#glossary">Glossary</a></li><li><a href="library.html#faq">FAQ</a></li><li><a href="library.html#about">About</a></li><li><a href="privacy.html" data-page="privacy">Privacy</a></li><li><a href="security.html" data-page="security">Security</a></li></ul></nav>
+</header>
+
+<div class="page with-side">
+  <nav id="libnav" class="side" aria-label="Library sections"><ul>
+    <li><a href="#knowledge">Knowledge Center</a></li><li><a href="#guidance">Official Guidance</a></li><li><a href="#reports">Report Library</a></li>
+    <li><a href="#templates">Templates</a></li><li><a href="#guides">Specialized Guides</a></li><li><a href="#glossary">Glossary</a></li>
+    <li><a href="#search">Search</a></li><li><a href="#faq">FAQ</a></li><li><a href="#about">About, sources and methodology</a></li>
+    <li><a href="compiler.html">Open the AAR Compiler</a></li></ul></nav>
+  <main id="main" class="content"><div id="lib"><p>Loading…</p></div></main>
+</div>
+<footer class="site-footer"><div class="inner">
+  <p><strong>Independent resource.</strong> This website is not an official government website and is not affiliated with any agency named on it. It does not replace agency requirements, policies, standards or professional judgment.</p>
+  <p>No accounts, no analytics, no tracking, no cookies. Your AAR project stays in your browser. <a href="privacy.html">Privacy</a> · <a href="security.html">Security</a> · <a href="library.html#about">Sources and methodology</a></p>
+</div></footer>
+<div id="live" class="sr-only" aria-live="polite"></div>
+<div id="print-area"></div>
+<noscript><p class="page warning">The compiler, search and library need JavaScript. The privacy and security pages work without it.</p></noscript>
+<script src="js/dom.js"></script>
+<script src="js/stages.js"></script>
+<script src="js/store.js"></script>
+<script src="data/resources.js"></script>
+<script src="data/reports.js"></script>
+<script src="data/knowledge.js"></script>
+<script src="data/glossary.js"></script>
+<script src="data/templates.js"></script>
+<script src="data/guides.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/library.js"></script>
+</body>
+</html>

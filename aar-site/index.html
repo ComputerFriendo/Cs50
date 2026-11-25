@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- SECURITY: Neocities cannot send custom HTTP headers, so the Content Security Policy is set here as a meta tag.
+     It allows only this site's own scripts and styles, no inline code, no network connections, no frames, and enforces Trusted Types.
+     frame-ancestors, HSTS and other header-only protections cannot be set from a meta tag; see security.html. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; worker-src 'none'; manifest-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests; require-trusted-types-for 'script'; trusted-types 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="Compile a complete After-Action Review step by step, with official guidance, report examples, templates and a report generator. Free, private, runs in your browser.">
+<title>AAR Compiler & Knowledge Center | After-Action Review guidance and tools</title>
+<link rel="stylesheet" href="css/site.css">
+<link rel="icon" href="data:,">
+</head>
+<body data-page="home">
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site-header">
+  <div class="bar">
+    <a class="brand" href="index.html"><svg class="logo" viewBox="0 0 36 36" aria-hidden="true" focusable="false"><rect width="36" height="36" rx="6" fill="#f2b134"/><path d="M8 27 L18 8 L28 27 Z" fill="none" stroke="#0f1b2d" stroke-width="3" stroke-linejoin="round"/><path d="M12.5 21.5 h11" stroke="#0f1b2d" stroke-width="3"/></svg><span>AAR Compiler &amp; Knowledge Center<small>After-Action Review guidance, tools and references</small></span></a>
+    <form id="site-search" class="site-search" role="search" action="library.html" method="get">
+      <label class="sr-only" for="site-q">Search the site</label>
+      <input id="site-q" name="q" type="search" maxlength="100" placeholder="Search guidance, reports, terms…" autocomplete="off">
+      <button class="btn alt" type="submit">Search</button>
+    </form>
+    <a class="btn-compiler" href="compiler.html">Open the compiler</a>
+    <button id="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+  </div>
+  <nav id="site-nav" aria-label="Main"><ul><li><a href="index.html" data-page="home">Home</a></li><li><a href="compiler.html" data-page="compiler">AAR Compiler</a></li><li><a href="library.html#knowledge">Knowledge Center</a></li><li><a href="library.html#guidance">Official Guidance</a></li><li><a href="library.html#reports">Report Library</a></li><li><a href="library.html#templates">Templates</a></li><li><a href="library.html#guides">Specialized Guides</a></li><li><a href="library.html#glossary">Glossary</a></li><li><a href="library.html#faq">FAQ</a></li><li><a href="library.html#about">About</a></li><li><a href="privacy.html" data-page="privacy">Privacy</a></li><li><a href="security.html" data-page="security">Security</a></li></ul></nav>
+</header>
+
+<main id="main">
+  <section class="hero"><div class="page">
+    <p class="kicker">After-Action Review compiler and knowledge center</p>
+    <h1>Compile a complete After-Action Review, from first notes to final report</h1>
+    <p>This site guides you through every stage of an After-Action Review using structured guidance, official reference material, templates and examples, then assembles your entries into a structured report and Improvement Plan. Everything runs in your browser.</p>
+    <div class="toolbar">
+      <a class="btn primary" href="compiler.html#s=setup">START A NEW AAR</a>
+      <a class="btn alt" href="compiler.html#s=dashboard">CONTINUE AN AAR</a>
+      <a class="btn alt" href="library.html#guidance">EXPLORE OFFICIAL GUIDANCE</a>
+      <a class="btn alt" href="library.html#reports">BROWSE REPORTS</a>
+      <a class="btn alt" href="library.html#templates">VIEW TEMPLATES</a>
+    </div>
+    <p id="continue-status" role="status"></p>
+  </div></section>
+  <div class="page">
+    <section class="content">
+      <h2>The AAR process in 17 stages</h2>
+      <p>The compiler follows this progression. Each stage explains its purpose, gives instructions and guiding questions, and links to templates, official resources and examples. You can work in any order and come back at any time.</p>
+      <ol class="process"><li><a href="compiler.html#s=setup">Initiate</a></li><li><a href="compiler.html#s=scope">Scope</a></li><li><a href="compiler.html#s=objectives">Objectives</a></li><li><a href="compiler.html#s=overview">Background</a></li><li><a href="compiler.html#s=timeline">Timeline</a></li><li><a href="compiler.html#s=evidence">Evidence</a></li><li><a href="compiler.html#s=participants">Participants</a></li><li><a href="compiler.html#s=interviews">Debrief</a></li><li><a href="compiler.html#s=observations">Observations</a></li><li><a href="compiler.html#s=analysis">Analysis</a></li><li><a href="compiler.html#s=findings">Findings</a></li><li><a href="compiler.html#s=lessons">Lessons Learned</a></li><li><a href="compiler.html#s=recommendations">Recommendations</a></li><li><a href="compiler.html#s=improvement">Improvement Plan</a></li><li><a href="compiler.html#s=report">Report Assembly</a></li><li><a href="compiler.html#s=qc">Quality Control</a></li><li><a href="compiler.html#s=export">Export</a></li></ol>
+      <h2>Featured resources</h2>
+      <div id="featured" class="two-col"></div>
+      <h2>Learn the method</h2>
+      <div class="two-col">
+        <div class="card"><h3><a href="library.html#knowledge/what-is">What is an AAR?</a></h3><p>The purpose, the process and the products of an After-Action Review.</p></div>
+        <div class="card"><h3><a href="library.html#knowledge/findings">How to develop findings</a></h3><p>Turn observations and evidence into supported conclusions.</p></div>
+        <div class="card"><h3><a href="library.html#guides">Specialized AAR guides</a></h3><p>Focus areas for emergency management, exercises, cyber, safety, infrastructure, public health and more.</p></div>
+      </div>
+      <h2>Disclaimer</h2>
+      <p class="note-box">This website is an independent informational resource. It is not an official government website unless explicitly stated, and it does not replace agency requirements, policies, standards or professional judgment. Links to official sources are provided for reference; confirm documents on the agency's own site.</p>
+      <h2>Your privacy</h2>
+      <p>No accounts, no tracking, no analytics. AAR projects are stored only in your own browser, unencrypted, and are never sent to this website. Do not enter sensitive information. <a href="privacy.html">Read the privacy page</a>.</p>
+    </section>
+  </div>
+</main>
+<footer class="site-footer"><div class="inner">
+  <p><strong>Independent resource.</strong> This website is not an official government website and is not affiliated with any agency named on it. It does not replace agency requirements, policies, standards or professional judgment.</p>
+  <p>No accounts, no analytics, no tracking, no cookies. Your AAR project stays in your browser. <a href="privacy.html">Privacy</a> · <a href="security.html">Security</a> · <a href="library.html#about">Sources and methodology</a></p>
+</div></footer>
+<div id="live" class="sr-only" aria-live="polite"></div>
+<div id="print-area"></div>
+<noscript><p class="page warning">The compiler, search and library need JavaScript. The privacy and security pages work without it.</p></noscript>
+<script src="js/dom.js"></script>
+<script src="js/stages.js"></script>
+<script src="js/store.js"></script>
+<script src="data/resources.js"></script>
+<script src="data/reports.js"></script>
+<script src="data/templates.js"></script>
+<script src="js/nav.js"></script>
+</body>
+</html>
